@@ -1,0 +1,4 @@
+#!/bin/sh
+cd "`dirname "$0"`/../src"
+
+docker build -t ${IMAGE:-timonier/davmail}:${TAG:-4.7.2} .

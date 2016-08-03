@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv /bin/sh
+
+sed -i "s@%DAVMAIL_URL%@${DAVMAIL_URL}@g" /etc/davmail/davmail.properties
+
+sed -i "s@%DAVMAIL_PORT_CALDAV%@${DAVMAIL_PORT_CALDAV:-1080}@g" /etc/davmail/davmail.properties
+sed -i "s@%DAVMAIL_PORT_IMAP%@${DAVMAIL_PORT_IMAP:-1143}@g" /etc/davmail/davmail.properties
+sed -i "s@%DAVMAIL_PORT_LDAP%@${DAVMAIL_PORT_LDAP:-1389}@g" /etc/davmail/davmail.properties
+sed -i "s@%DAVMAIL_PORT_POP%@${DAVMAIL_PORT_POP:-1110}@g" /etc/davmail/davmail.properties
+sed -i "s@%DAVMAIL_PORT_SMTP%@${DAVMAIL_PORT_SMTP:-1025}@g" /etc/davmail/davmail.properties
