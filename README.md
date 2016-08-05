@@ -21,16 +21,16 @@ Run the application via `docker run`. [OWA](https://en.wikipedia.org/wiki/Outloo
 ```sh
 docker run \
     --net host \
-    -e DAVMAIL_PORT_CALDAV=2080 \
-    -e DAVMAIL_PORT_IMAP=2143 \
-    -e DAVMAIL_PORT_LDAP=2389 \
-    -e DAVMAIL_PORT_POP=2110 \
-    -e DAVMAIL_PORT_SMTP=2025 \
-    -e DAVMAIL_URL="https://YOUR-OWA-URL" \
+    -e PORT_CALDAV=2080 \
+    -e PORT_IMAP=2143 \
+    -e PORT_LDAP=2389 \
+    -e PORT_POP=2110 \
+    -e PORT_SMTP=2025 \
+    -e URL="https://YOUR-OWA-URL" \
     timonier/davmail
 ```
 
-__Note__: The environment variables `DAVMAIL_PORT_*` are not mandatory. The default values for these variables are the values used in the [documentation](http://davmail.sourceforge.net/serversetup.html).
+__Note__: The environment variables `PORT_*` are not mandatory. The default values for these variables are the values used in the [documentation](http://davmail.sourceforge.net/serversetup.html).
 
 ## Contributing
 
