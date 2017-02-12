@@ -1,9 +1,12 @@
 FROM alpine:3.4
-MAINTAINER Morgan Auchede <morgan.auchede@gmail.com>
+
+LABEL \
+    maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
 
 ENV \
     DAVMAIL_VERSION=4.7.2 \
-    S6_OVERLAY_VERSION=1.17.1.2
+    S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
+    S6_OVERLAY_VERSION=1.19.1.1
 
 RUN set -x \
 
@@ -18,13 +21,13 @@ RUN set -x \
 
     # Install davmail
 
-    && curl -sL "http://downloads.sourceforge.net/project/davmail/davmail/$DAVMAIL_VERSION/davmail-linux-x86_64-$DAVMAIL_VERSION-2427.tgz" | tar fxz - -C /tmp \
+    && curl -sL "http://downloads.sourceforge.net/project/davmail/davmail/${DAVMAIL_VERSION}/davmail-linux-x86_64-${DAVMAIL_VERSION}-2427.tgz" | tar fxz - -C /tmp \
     && mv /tmp/davmail-linux-x86_64-4.7.2-2427 /usr/lib/davmail \
     && ln -s /usr/lib/davmail/davmail.sh /usr/bin/davmail \
 
     # Install s6-overlay
 
-    && curl -ksL "https://github.com/just-containers/s6-overlay/releases/download/v$S6_OVERLAY_VERSION/s6-overlay-amd64.tar.gz" | tar fxz - -C / \
+    && curl -ksL "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz" | tar fxz - -C / \
 
     # Clean
 
@@ -36,4 +39,4 @@ RUN set -x \
 
 COPY ./rootfs /
 
-ENTRYPOINT [ "/init" , "/usr/lib/davmail/davmail.sh" , "/etc/davmail/davmail.properties" ]
+ENTRYPOINT [ "/init" ]

@@ -1,5 +1,7 @@
 # README
 
+POP / IMAP / SMTP / Caldav / Carddav / LDAP Exchange Gateway
+
 ## Installation
 
 Pull the image `timonier/davmail`:
@@ -49,4 +51,5 @@ __Note__: Use the script `bin/build` to test your modifications locally.
 * [command "docker pull"](https://docs.docker.com/reference/commandline/pull/)
 * [command "docker run"](https://docs.docker.com/reference/run/)
 * [image "timonier/davmail"](https://hub.docker.com/r/timonier/davmail/)
+* [just-containers/s6-overlay](https://github.com/just-containers/s6-overlay)
 * [owa](https://en.wikipedia.org/wiki/Outlook_on_the_web)
