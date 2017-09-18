@@ -2,33 +2,19 @@
 
 POP / IMAP / SMTP / Caldav / Carddav / LDAP Exchange Gateway
 
-## Installation
-
-Pull the image `timonier/davmail`:
-
-```sh
-# Get the latest image (version 4.7.2)
-docker pull timonier/davmail
-
-# Or get a specific version
-
-# Get the version 4.7.2
-docker pull timonier/davmail:4.7.2
-```
-
 ## Usage
 
 Run the application via `docker run`. [OWA](https://en.wikipedia.org/wiki/Outlook_on_the_web) URL and Davmail ports can be passed as environment variables:
 
 ```sh
 docker run \
+    --env PORT_CALDAV=2080 \
+    --env PORT_IMAP=2143 \
+    --env PORT_LDAP=2389 \
+    --env PORT_POP=2110 \
+    --env PORT_SMTP=2025 \
+    --env URL="https://YOUR-OWA-URL" \
     --net host \
-    -e PORT_CALDAV=2080 \
-    -e PORT_IMAP=2143 \
-    -e PORT_LDAP=2389 \
-    -e PORT_POP=2110 \
-    -e PORT_SMTP=2025 \
-    -e URL="https://YOUR-OWA-URL" \
     timonier/davmail
 ```
 
@@ -48,8 +34,8 @@ __Note__: Use the script `bin/build` to test your modifications locally.
 
 * [davmail](http://davmail.sourceforge.net/)
 * [davmail setup as a standalone server](http://davmail.sourceforge.net/serversetup.html)
-* [command "docker pull"](https://docs.docker.com/reference/commandline/pull/)
 * [command "docker run"](https://docs.docker.com/reference/run/)
 * [image "timonier/davmail"](https://hub.docker.com/r/timonier/davmail/)
-* [just-containers/s6-overlay](https://github.com/just-containers/s6-overlay)
 * [owa](https://en.wikipedia.org/wiki/Outlook_on_the_web)
+* [timonier/dumb-entrypoint](https://github.com/timonier/dumb-entrypoint)
+* [timonier/version-lister](https://github.com/timonier/version-lister)

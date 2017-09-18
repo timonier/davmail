@@ -1,40 +1,40 @@
-FROM alpine:3.4
+FROM openjdk:jre-alpine
 
 LABEL \
     maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
 
 ENV \
-    DAVMAIL_VERSION=4.7.2 \
+    DAVMAIL_VERSION=latest \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
-    S6_OVERLAY_VERSION=1.19.1.1
+    S6_KEEP_ENV=1
 
-RUN set -x \
+RUN set -ex \
 
     # Install packages
 
-    && apk add --no-cache --no-progress --virtual build_deps \
+    && apk add --no-cache --no-progress --virtual BUILD_DEPS \
            curl \
 
     && apk add --no-cache --no-progress \
            ca-certificates \
-           openjdk8-jre \
 
     # Install davmail
 
-    && curl -sL "http://downloads.sourceforge.net/project/davmail/davmail/${DAVMAIL_VERSION}/davmail-linux-x86_64-${DAVMAIL_VERSION}-2427.tgz" | tar fxz - -C /tmp \
-    && mv /tmp/davmail-linux-x86_64-4.7.2-2427 /usr/lib/davmail \
-    && ln -s /usr/lib/davmail/davmail.sh /usr/bin/davmail \
+    && export $(curl "https://raw.githubusercontent.com/timonier/version-lister/release/generated/davmail/${DAVMAIL_VERSION}" | xargs) \
 
-    # Install s6-overlay
+    && curl --location "http://downloads.sourceforge.net/project/davmail/davmail/${DAVMAIL_VERSION}/davmail-linux-x86_64-${DAVMAIL_VERSION}-${DAVMAIL_BUILD}.tgz" | tar --directory /tmp --extract --gzip \
+    && mv "/tmp/davmail-linux-x86_64-${DAVMAIL_VERSION}-${DAVMAIL_BUILD}" /usr/share/davmail \
 
-    && curl -ksL "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz" | tar fxz - -C / \
+    # Install timonier/dumb-entrypoint
+
+    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/s6-overlay/installer" | INSTALL_DIRECTORY="/usr/sbin" sh -s -- install \
 
     # Clean
 
     && apk del --no-progress \
-           build_deps \
+           BUILD_DEPS \
 
-    && rm -rf \
+    && rm -f -r \
            /tmp/*
 
 COPY ./rootfs /

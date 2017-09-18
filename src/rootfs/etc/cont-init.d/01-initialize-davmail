@@ -1,7 +1,8 @@
-#!/usr/bin/with-contenv /bin/sh
+#!/bin/sh
+set -e
 
 if [ -z "${URL}" ] ; then
-    echo "Environment variable URL is missing." 1>&2
+    echo 1>&2 "Environment variable URL is missing."
     exit 1
 fi
 sed -i "s@%URL%@${URL}@g" /etc/davmail/davmail.properties

@@ -1,3 +1,4 @@
 #!/bin/sh
+set -e
 
-/usr/lib/davmail/davmail.sh /etc/davmail/davmail.properties
+/usr/share/davmail/davmail.sh /etc/davmail/davmail.properties
