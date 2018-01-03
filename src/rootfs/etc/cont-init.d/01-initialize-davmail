@@ -5,12 +5,12 @@ if [ -z "${URL}" ] ; then
     echo 1>&2 "Environment variable URL is missing."
     exit 1
 fi
-sed -i "s@%URL%@${URL}@g" /etc/davmail/davmail.properties
 
-sed -i "s@%PORT_CALDAV%@${PORT_CALDAV:-1080}@g" /etc/davmail/davmail.properties
-sed -i "s@%PORT_IMAP%@${PORT_IMAP:-1143}@g" /etc/davmail/davmail.properties
-sed -i "s@%PORT_LDAP%@${PORT_LDAP:-1389}@g" /etc/davmail/davmail.properties
-sed -i "s@%PORT_POP%@${PORT_POP:-1110}@g" /etc/davmail/davmail.properties
-sed -i "s@%PORT_SMTP%@${PORT_SMTP:-1025}@g" /etc/davmail/davmail.properties
+export PORT_CALDAV="${PORT_CALDAV:-1080}"
+export PORT_IMAP="${PORT_IMAP:-1143}"
+export PORT_LDAP="${PORT_LDAP:-1389}"
+export PORT_POP="${PORT_POP:-1110}"
+export PORT_SMTP="${PORT_SMTP:-1025}"
+export SMTP_SAVE_IN_SENT="${SMTP_SAVE_IN_SENT:-false}"
 
-sed -i "s@%SMTP_SAVE_IN_SENT%@${SMTP_SAVE_IN_SENT:-false}@g" /etc/davmail/davmail.properties
+envsubst '${URL}:${PORT_CALDAV}:${PORT_IMAP}:${PORT_LDAP}:${PORT_POP}:${PORT_SMTP}:${SMTP_SAVE_IN_SENT}' < /etc/davmail/davmail.properties.template > /etc/davmail/davmail.properties

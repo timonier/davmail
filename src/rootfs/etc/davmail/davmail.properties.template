@@ -1,0 +1,30 @@
+# Basic settings
+
+davmail.enableEws=auto
+davmail.server=true
+davmail.url=${URL}
+
+davmail.caldavPort=${PORT_CALDAV}
+davmail.imapPort=${PORT_IMAP}
+davmail.ldapPort=${PORT_LDAP}
+davmail.popPort=${PORT_POP}
+davmail.smtpPort=${PORT_SMTP}
+
+# Loggings settings
+
+davmail.logFilePath=/dev/stdout
+davmail.logFileSize=0
+log4j.logger.davmail=INFO
+
+# Network settings
+
+davmail.allowRemote=true
+davmail.bindAddress=
+davmail.clientSoTimeout=
+davmail.disableUpdateCheck=true
+davmail.enableKeepalive=false
+davmail.folderSizeLimit=0
+
+# SMTP settings
+
+davmail.smtpSaveInSent=${SMTP_SAVE_IN_SENT}
