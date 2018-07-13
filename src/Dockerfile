@@ -40,3 +40,5 @@ RUN set -ex \
 COPY ./rootfs /
 
 ENTRYPOINT [ "/init" ]
+
+VOLUME [ "/tmp" ]
