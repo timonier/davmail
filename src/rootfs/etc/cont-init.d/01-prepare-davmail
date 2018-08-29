@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e -u
+
+if [ -z "${URL}" ]; then
+    echo 1>&2 "Environment variable URL is missing."
+    exit 255
+fi
+
+find /etc/davmail -type f -print0 | xargs -0 -I {} -n1 -- sh -c "dockerize -template '{}:{}' || exit 255"
