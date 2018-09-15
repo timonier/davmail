@@ -26,10 +26,11 @@ If you like / use this project, please let me known by adding a [★](https://he
 
 ## Links
 
+* [command "docker run"](https://docs.docker.com/reference/run/)
 * [davmail](http://davmail.sourceforge.net/)
 * [davmail setup as a standalone server](http://davmail.sourceforge.net/serversetup.html)
-* [command "docker run"](https://docs.docker.com/reference/run/)
 * [image "timonier/davmail"](https://hub.docker.com/r/timonier/davmail/)
+* [just-containers/s6-overlay](https://github.com/just-containers/s6-overlay)
 * [jwilder/dockerize](https://github.com/jwilder/dockerize)
 * [owa](https://en.wikipedia.org/wiki/Outlook_on_the_web)
 * [timonier/dumb-entrypoint](https://github.com/timonier/dumb-entrypoint)

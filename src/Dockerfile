@@ -27,7 +27,7 @@ RUN set -e -u -x \
     && curl --location "${DOCKERIZE_RELEASE}" | tar --directory /tmp --extract --gzip \
     && mv /tmp/dockerize /usr/bin/dockerize \
 \
-    # Install dumb-entrypoint
+    # Install s6-overlay
 \
     && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/s6-overlay/installer" | sh -s -- install \
 \
