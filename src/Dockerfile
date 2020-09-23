@@ -1,7 +1,7 @@
 FROM openjdk:jre-alpine
 
 LABEL \
-    maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
+    maintainer="Morgan AUCHEDE <morgan.auchede@gmail.com>"
 
 ENV \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \

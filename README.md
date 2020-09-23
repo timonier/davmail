@@ -2,6 +2,8 @@
 
 POP / IMAP / SMTP / Caldav / Carddav / LDAP Exchange Gateway
 
+⚠️ This project is no longer maintained. ⚠️
+
 ## Usage
 
 Run the application via `docker run`. [OWA](https://en.wikipedia.org/wiki/Outlook_on_the_web) URL and Davmail ports can be passed as environment variables:
@@ -11,18 +13,6 @@ docker run --env PORT_CALDAV=2080 --env PORT_IMAP=2143 --env PORT_LDAP=2389 --en
 ```
 
 __Note__: The environment variables `PORT_*` are not mandatories. The default values for these variables are the values used in the [documentation](http://davmail.sourceforge.net/serversetup.html).
-
-## Contributing
-
-1. Fork it.
-2. Create your branch: `git checkout -b my-new-feature`.
-3. Commit your changes: `git commit -am 'Add some feature'`.
-4. Push to the branch: `git push origin my-new-feature`.
-5. Submit a pull request.
-
-__Note__: Use the script `bin/build-image` to test your modifications locally.
-
-If you like / use this project, please let me known by adding a [★](https://help.github.com/articles/about-stars/) on the [GitHub repository](https://github.com/timonier/davmail).
 
 ## Links
 
